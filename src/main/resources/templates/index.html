@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Pizza Restaurant</title>
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        .container {
+            background: white;
+            width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        input, select {
+            width: 90%;
+            padding: 8px;
+            margin: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #ff5733;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>🍕 Pizza Order</h2>
+
+    <form action="/order" method="post">
+        <select name="pizzaType">
+            <option>Margherita</option>
+            <option>Pepperoni</option>
+            <option>BBQ Chicken</option>
+            <option>Vegetarian</option>
+        </select>
+
+        <select name="size">
+            <option>Small</option>
+            <option>Medium</option>
+            <option>Large</option>
+        </select>
+
+        <input type="text" name="toppings" placeholder="Enter toppings">
+
+        <input type="number" name="quantity" placeholder="Quantity">
+
+        <button type="submit">Place Order</button>
+    </form>
+
+    <div th:if="${order != null}">
+        <h3>Order Summary</h3>
+        <p>Pizza: <span th:text="${order.pizzaType}"></span></p>
+        <p>Size: <span th:text="${order.size}"></span></p>
+        <p>Toppings: <span th:text="${order.toppings}"></span></p>
+        <p>Quantity: <span th:text="${order.quantity}"></span></p>
+        <p>Total Price: ₹ <span th:text="${order.totalPrice}"></span></p>
+
+    </div>
+
+</div>
+
+</body>
+</html>

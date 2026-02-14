@@ -1,14 +1,20 @@
 # Use official OpenJDK image
-FROM openjdk:17
+FROM eclipse-temurin:17-jdk
 
 # Set working directory
 WORKDIR /app
 
-# Copy all files
+# Copy project files
 COPY . .
 
-# Compile Java files
-RUN javac Main.java
+# Give permission to mvnw
+RUN chmod +x mvnw
 
-# Run the application
-CMD ["java", "Main"]
+# Build the project
+RUN ./mvnw clean package -DskipTests
+
+# Expose port
+EXPOSE 8080
+
+# Run the jar file
+CMD ["java", "-jar", "target/demo-0.0.1-SNAPSHOT.jar"]

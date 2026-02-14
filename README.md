@@ -11,7 +11,7 @@ A simple full-stack Pizza Ordering Web Application built using:
 Live Application
 
 Order Pizza Here:  
-https://pizza-app-uojx.onrender.com/order
+https://pizza-app-uojx.onrender.com/
 
 Features:
 
